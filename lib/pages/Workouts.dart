@@ -19,6 +19,7 @@ class Workouts extends StatelessWidget {
                 Title: allWorkouts[Index].Title,
                 SubTitle: allWorkouts[Index].SubTitle,
                 popup: allWorkouts[Index].popup,
+                trainer: allWorkouts[Index].Trainer,
                 imagepath: allWorkouts[Index].ImagePath);
           },
           itemCount: allWorkouts.length,

@@ -9,6 +9,7 @@ class WorkoutWidget extends StatelessWidget {
   final String imagepath;
   final String Title;
   final String SubTitle;
+  final String trainer;
   final bool popup;
 
   const WorkoutWidget(
@@ -16,6 +17,7 @@ class WorkoutWidget extends StatelessWidget {
       required this.Title,
       required this.SubTitle,
       required this.popup,
+      required this.trainer,
       required this.imagepath});
 
   @override
@@ -44,10 +46,10 @@ class WorkoutWidget extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 6,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    colorFilter: ColorFilter.mode(
-                      Colors.black.withOpacity(0.5), // Fading effect
-                      BlendMode.darken,
-                    ),
+                    // colorFilter: ColorFilter.mode(
+                    //   Colors.black.withOpacity(0.5), // Fading effect
+                    //   BlendMode.darken,
+                    // ),
 
                     image: AssetImage(imagepath),
                     // Use AssetImage for local images
@@ -55,18 +57,41 @@ class WorkoutWidget extends StatelessWidget {
                   ),
                 ),
                 child: ListTile(
-                  title: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        Title,
-                        style: TextStyle(fontSize: 72),
-                      ),
-                      Text(
-                        SubTitle,
-                        style: TextStyle(fontSize: 32),
-                      ),
-                    ],
+                  title: Padding(
+                    padding: const EdgeInsets.only(left: 100.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          Title,
+                          style: TextStyle(
+                              fontSize: 72,
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              SubTitle,
+                              style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                            SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              "By $trainer",
+                              style: TextStyle(
+                                  fontSize: 32,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
